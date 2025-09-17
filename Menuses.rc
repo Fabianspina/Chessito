@@ -1,0 +1,66 @@
+#include <windows.h>
+#define CM_VT 102
+#define CM_SALIR 103
+#define CM_TURNO 104
+#define CM_AYUDA 105
+#define CM_VERTABLERO 106
+#define CM_MOVER 107
+#define CM_VTAMENAZAS 108
+#define CM_TABCHES 109
+#define CM_TUTOR 110
+#define CM_MOVIDASPOSIBLES 111
+#define CM_CHESSITO 112
+#define CM_ELO 113
+#define CM_JAQUE 114
+#define CM_AMBITOREY 115
+#define CM_GUARDAR 116
+#define CM_JAQUEMATE 117
+#define IDD_MAIN_DIALOG   200
+#define IDC_EDIT_JUGADA   201
+#define IDC_BUTTON_MOVER  202
+#define IDC_TABLERO       203
+Menu MENU
+    BEGIN
+        POPUP "&Archivo"
+            BEGIN
+                    MENUITEM "Presentación", CM_VT
+                    MENUITEM "&Ver tablero", CM_VERTABLERO
+                    MENUITEM "&Ver amenazas", CM_VTAMENAZAS
+                    MENUITEM "&Movidas posibles", CM_MOVIDASPOSIBLES
+                    MENUITEM "&Jaque mate", CM_JAQUEMATE
+                    MENUITEM "&Jaque",CM_JAQUE
+                    MENUITEM "&Casilla Rey", CM_AMBITOREY
+                    MENUITEM "&Chessito", CM_CHESSITO
+                    MENUITEM "&Mover", CM_MOVER
+                    MENUITEM SEPARATOR
+                    MENUITEM "Turno", CM_TURNO
+                    MENUITEM "Elo", CM_ELO
+                    MENUITEM SEPARATOR
+                    MENUITEM "&Salir", CM_SALIR
+            END
+
+     POPUP "&Herramientas"
+            BEGIN
+                    MENUITEM "&Tabches", CM_TABCHES
+                    MENUITEM "&Guardar partida", CM_GUARDAR
+            END
+        POPUP "&Ayuda"
+            BEGIN
+                    MENUITEM "&Ayuda", CM_AYUDA
+                    MENUITEM "Tutorial de Chessito", CM_TUTOR
+            END
+        END
+
+IDD_MAIN_DIALOG DIALOGEX 0, 0, 300, 200
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Chessito - Interfaz de Juego"
+MENU Menu
+FONT 9, "Segoe UI"
+BEGIN
+    EDITTEXT    IDC_EDIT_JUGADA,  10, 10, 100, 14, WS_TABSTOP | WS_BORDER
+    LTEXT       "Jugada (e2e4):",  -1, 10, 30, 80, 10
+    PUSHBUTTON  "Mover",           IDC_BUTTON_MOVER, 120, 10, 50, 14, WS_TABSTOP
+    CONTROL     "",                IDC_TABLERO, "Static", SS_OWNERDRAW, 10, 50, 192, 192
+END
+
+champ ICON "champ.ico"
